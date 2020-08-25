@@ -21,188 +21,35 @@ namespace guessing_game
 
             if (levelAnswer == "easy")
             {
-                Console.WriteLine("Easy mode selected");
-                EasyMode();
+                Console.WriteLine("Easy mode selected.");
+                int numOfTriesEasy = 8;
+                Mode(numOfTriesEasy);
+                // EasyMode();
             }
             else if (levelAnswer == "medium")
             {
-                Console.WriteLine("Medium mode selected");
-                MediumMode();
+                Console.WriteLine("Medium mode selected.");
+                int numOfTriesMedium = 6;
+                Mode(numOfTriesMedium);
+                // MediumMode();
             }
             else if (levelAnswer == "hard")
             {
-                Console.WriteLine("Hard mode selected");
-                HardMode();
+                Console.WriteLine("Hard mode selected.");
+                int numOfTriesHard = 4;
+                Mode(numOfTriesHard);
+                // HardMode();
             }
             else if (levelAnswer == "cheater")
             {
-                Console.WriteLine("Cheater mode selected");
+                Console.WriteLine("Cheater mode selected.");
                 CheaterMode();
-            }
-        }
-
-        static void HardMode()
-        {
-            Console.Write("Guess a number (1-100): ");
-            int answer = Int32.Parse(Console.ReadLine());
-            int secretNum = new Random().Next(1, 100);
-            int tries = 0;
-
-            if (answer != secretNum)
-            {
-                Console.WriteLine("Wrong guess!");
-                tries++;
-                Console.WriteLine($"Number of guesses left: {4 - tries}");
-                if (answer < secretNum)
-                {
-                    Console.WriteLine("Guess is too Low!");
-                }
-                else if (answer > secretNum)
-                {
-                    Console.WriteLine("Guess is too High!");
-                }
-
-                while (tries < 4)
-                {
-                    Console.Write("Guess a number: ");
-                    answer = Int32.Parse(Console.ReadLine());
-
-                    if (answer != secretNum)
-                    {
-                        Console.WriteLine("Wrong guess!");
-                        tries++;
-                        Console.WriteLine($"Number of guesses left: {4 - tries}");
-                        if (answer < secretNum)
-                        {
-                            Console.WriteLine("Guess is too Low!");
-                        }
-                        else if (answer > secretNum)
-                        {
-                            Console.WriteLine("Guess is too High!");
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("Your guess is right!");
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                Console.WriteLine("You're correct!");
-            }
-        }
-
-        static void MediumMode()
-        {
-            Console.Write("Guess a number (1-100): ");
-            int answer = Int32.Parse(Console.ReadLine());
-            int secretNum = new Random().Next(1, 100);
-            int tries = 0;
-
-            if (answer != secretNum)
-            {
-                Console.WriteLine("Wrong guess!");
-                tries++;
-                Console.WriteLine($"Number of guesses left: {6 - tries}");
-                if (answer < secretNum)
-                {
-                    Console.WriteLine("Guess is too Low!");
-                }
-                else if (answer > secretNum)
-                {
-                    Console.WriteLine("Guess is too High!");
-                }
-
-                while (tries < 6)
-                {
-                    Console.Write("Guess a number: ");
-                    answer = Int32.Parse(Console.ReadLine());
-
-                    if (answer != secretNum)
-                    {
-                        Console.WriteLine("Wrong guess!");
-                        tries++;
-                        Console.WriteLine($"Number of guesses left: {6 - tries}");
-                        if (answer < secretNum)
-                        {
-                            Console.WriteLine("Guess is too Low!");
-                        }
-                        else if (answer > secretNum)
-                        {
-                            Console.WriteLine("Guess is too High!");
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("Your guess is right!");
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                Console.WriteLine("You're correct!");
-            }
-        }
-
-        static void EasyMode()
-        {
-            Console.Write("Guess a number (1-100): ");
-            int answer = Int32.Parse(Console.ReadLine());
-            int secretNum = new Random().Next(1, 100);
-            int tries = 0;
-
-            if (answer != secretNum)
-            {
-                Console.WriteLine("Wrong guess!");
-                tries++;
-                Console.WriteLine($"Number of guesses left: {8 - tries}");
-                if (answer < secretNum)
-                {
-                    Console.WriteLine("Guess is too Low!");
-                }
-                else if (answer > secretNum)
-                {
-                    Console.WriteLine("Guess is too High!");
-                }
-
-                while (tries < 8)
-                {
-                    Console.Write("Guess a number: ");
-                    answer = Int32.Parse(Console.ReadLine());
-
-                    if (answer != secretNum)
-                    {
-                        Console.WriteLine("Wrong guess!");
-                        tries++;
-                        Console.WriteLine($"Number of guesses left: {8 - tries}");
-                        if (answer < secretNum)
-                        {
-                            Console.WriteLine("Guess is too Low!");
-                        }
-                        else if (answer > secretNum)
-                        {
-                            Console.WriteLine("Guess is too High!");
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("Your guess is right!");
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                Console.WriteLine("You're correct!");
             }
         }
 
         static void CheaterMode()
         {
-            Console.Write("Guess a number (1-100): ");
+            Console.Write("Pick a number (1-100): ");
             int answer = Int32.Parse(Console.ReadLine());
             int secretNum = new Random().Next(1, 100);
 
@@ -211,16 +58,16 @@ namespace guessing_game
                 Console.WriteLine("Wrong guess!");
                 if (answer < secretNum)
                 {
-                    Console.WriteLine("Guess is too Low!");
+                    Console.WriteLine("Too Low!");
                 }
                 else if (answer > secretNum)
                 {
-                    Console.WriteLine("Guess is too High!");
+                    Console.WriteLine("Too High!");
                 }
 
                 while (answer != secretNum)
                 {
-                    Console.Write("Guess a number: ");
+                    Console.Write("Pick another number: ");
                     answer = Int32.Parse(Console.ReadLine());
 
                     if (answer != secretNum)
@@ -228,23 +75,76 @@ namespace guessing_game
                         Console.WriteLine("Wrong guess!");
                         if (answer < secretNum)
                         {
-                            Console.WriteLine("Guess is too Low!");
+                            Console.WriteLine("Too Low!");
                         }
                         else if (answer > secretNum)
                         {
-                            Console.WriteLine("Guess is too High!");
+                            Console.WriteLine("Too High!");
                         }
                     }
                     else
                     {
-                        Console.WriteLine("Your guess is right!");
+                        Console.WriteLine("Winner Winner Chicken Dinner!");
                         break;
                     }
                 }
             }
             else
             {
-                Console.WriteLine("You're correct!");
+                Console.WriteLine("Winner Winner Chicken Dinner!");
+            }
+        }
+
+        static void Mode(int numOfTries)
+        {
+            Console.Write("Pick a number (1-100): ");
+            int answer = Int32.Parse(Console.ReadLine());
+            int secretNum = new Random().Next(1, 100);
+            int tries = 0;
+
+            if (answer != secretNum)
+            {
+                Console.WriteLine("Wrong guess!");
+                tries++;
+                Console.WriteLine($"Number of guesses left: {numOfTries - tries}");
+                if (answer < secretNum)
+                {
+                    Console.WriteLine("Too Low!");
+                }
+                else if (answer > secretNum)
+                {
+                    Console.WriteLine("Too High!");
+                }
+
+                while (tries < numOfTries)
+                {
+                    Console.Write("Pick another number: ");
+                    answer = Int32.Parse(Console.ReadLine());
+
+                    if (answer != secretNum)
+                    {
+                        Console.WriteLine("Wrong guess!");
+                        tries++;
+                        Console.WriteLine($"Number of guesses left: {numOfTries - tries}");
+                        if (answer < secretNum)
+                        {
+                            Console.WriteLine("Too Low!");
+                        }
+                        else if (answer > secretNum)
+                        {
+                            Console.WriteLine("Too High!");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Winner Winner Chicken Dinner!");
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("Winner Winner Chicken Dinner!");
             }
         }
     }
