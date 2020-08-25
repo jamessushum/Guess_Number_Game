@@ -16,14 +16,14 @@ namespace guessing_game
         {
             Console.Write("Guess a number (1-100): ");
             int answer = Int32.Parse(Console.ReadLine());
-            int secretNum = 42;
+            int secretNum = new Random().Next(1, 100);
             int tries = 0;
 
             if (answer != secretNum)
             {
                 Console.WriteLine("Wrong guess!");
                 tries++;
-                Console.WriteLine($"This is guess #: {tries}");
+                Console.WriteLine($"Number of guesses left: {4 - tries}");
 
                 while (tries < 4)
                 {
@@ -34,7 +34,7 @@ namespace guessing_game
                     {
                         Console.WriteLine("Wrong guess!");
                         tries++;
-                        Console.WriteLine($"This is guess #: {tries}");
+                        Console.WriteLine($"Number of guesses left: {4 - tries}");
                     }
                     else
                     {
