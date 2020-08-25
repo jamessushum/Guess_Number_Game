@@ -14,17 +14,35 @@ namespace guessing_game
 
         static void AskQuestion()
         {
+            Console.Write("Guess a number: ");
+            int answer = Int32.Parse(Console.ReadLine());
             int secretNum = 42;
-            Console.Write("Guess the secret number: ");
-            string answer = Console.ReadLine().ToLower();
-            int stringToInt = Int32.Parse(answer);
-            if (stringToInt == secretNum)
+            int tries = 0;
+
+            if (answer != secretNum)
             {
-                Console.Write("You're right!");
+                Console.WriteLine("Wrong guess!");
+                tries++;
+                while (tries < 4)
+                {
+                    Console.Write("Guess a number: ");
+                    answer = Int32.Parse(Console.ReadLine());
+
+                    if (answer != secretNum)
+                    {
+                        Console.WriteLine("Wrong guess!");
+                        tries++;
+                    }
+                    else
+                    {
+                        Console.WriteLine("You're right!");
+                        break;
+                    }
+                }
             }
             else
             {
-                Console.Write("You're wrong!");
+                Console.WriteLine("You're correct!");
             }
         }
     }
